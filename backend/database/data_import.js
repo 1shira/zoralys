@@ -5,7 +5,9 @@ import pgpx from 'pg-promise';
 import AnimeListe from './data/data.json' assert { type: 'json' };
 const app = express();
 const pgp = pgpx();
-const db = pgp('postgres://<user>:<password>@localhost:5432/AnimeListe');
+const db = pgp(	
+	`postgres://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.POST}/${process.env.DATABASE}`
+);
 let a = '';
 //we take the data
 const data = AnimeListe.data;
