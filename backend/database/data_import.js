@@ -3,6 +3,10 @@
 import express from 'express';
 import pgpx from 'pg-promise';
 import AnimeListe from './data/data.json' assert { type: 'json' };
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const app = express();
 const pgp = pgpx();
 const db = pgp(	
