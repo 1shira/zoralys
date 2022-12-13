@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const pgp = pgpx();
 const db = pgp(	
-	`postgres://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.POST}/${process.env.DATABASE}`
+	`${process.env.DBTYPE}://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DATABASE}`
 );
 let a = '';
 //we take the data
