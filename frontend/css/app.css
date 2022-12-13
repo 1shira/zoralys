@@ -689,6 +689,26 @@ video {
     margin-top: 1rem;
   }
 
+  .lg\:ml-40 {
+    margin-left: 10rem;
+  }
+
+  .lg\:mr-40 {
+    margin-right: 10rem;
+  }
+
+  .lg\:ml-60 {
+    margin-left: 15rem;
+  }
+
+  .lg\:mr-60 {
+    margin-right: 15rem;
+  }
+
+  .lg\:mt-12 {
+    margin-top: 3rem;
+  }
+
   .lg\:h-28 {
     height: 7rem;
   }
