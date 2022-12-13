@@ -1,6 +1,8 @@
 const myApp = {
 	data() {
 		return {
+            //this ofc will come from a server, and will include more data
+            animeList: ["Naruto", "Overlord","Bleach"]
 		};
 	},
     methods:{
@@ -10,8 +12,8 @@ const myApp = {
         },
         username(){
             //will get username
-            let username = "UsernameThatIsTooLongToShow"
-            if(username.length > 12){
+            let username = "Username"
+            if(username.length > 11){
                 return username.substring(0,10) + "..."
             }
             return username
