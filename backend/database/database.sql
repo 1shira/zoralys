@@ -25,6 +25,7 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.anime (
+    id serial,
     sources text,
     title text,
     type text,

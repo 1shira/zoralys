@@ -29,4 +29,4 @@ for (let index = 0; index < data.length; index++) {
 	//to not have the , at the end
 	if (index !== data.length - 1) a += ',\n';
 }
-db.none(`insert into anime VALUES ${a}`);
+db.none(`insert into anime (sources, title, type, episodes, status, season, picture, thumbnail, synonyms, relations, tags, other) VALUES ${a}`);
