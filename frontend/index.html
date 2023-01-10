@@ -15,11 +15,20 @@
           <img :src="getUserProfilePicture()" class="w-12 lg:w-20"></img><div class="w-44 lg:w-60 flex justify-center"><span class="align-middle">{{username()}}</span></div>
         </div>
       </div>
-      <div class="bg-pink-800 w-auto h-auto rounded-full ml-7 mr-7 p-5 lg:ml-60 lg:mr-60 lg:mt-12">
-        <div v-for="anime of animeList">
-          <!-- just temporary for testing of general styling -->
-            <span>{{anime}}</span>
-        </div>
+
+      <div class="bg-pink-800 w-auto h-auto rounded-full ml-7 mr-7 p-5 lg:ml-60 lg:mr-60 lg:mt-6">
+          <table class="table-auto">
+            <thead>
+              <tr>
+                <th><b>Name</b></th>
+              </tr>
+            </thead>
+            <tbody v-for="anime of animeList">
+              <tr>
+                <td>{{anime}}</td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
     <script src="./node_modules/vue/dist/vue.global.prod.js"></script>
