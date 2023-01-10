@@ -28,9 +28,12 @@ app.use(
 );
 app.use(cookieParser());
 
+//login
 app.post('/login', (req, res) => {
 	if (
-		getUserAuth(req.body.uuid) &&
+		//check if we have the user and the pass matches it
+		//honestly the .then should not be neccesary but just to be sure rn
+		getUserAuth(req.body.uuid).then((result) =>  result ? true : false) &&
 		getUserAuth(req.body.uuid).then((result) => req.body.hashedPass === result)
 	) {
 		session = req.session;
@@ -38,16 +41,20 @@ app.post('/login', (req, res) => {
 	}
 });
 
+//logout
 app.get('/logout', (req, res) => {
 	req.session.destroy();
 	res.redirect('/');
 });
 
+//create a new user
 app.put('/user', (req, res) => {
 	if (req.body.uuid && req.body.hashedPass) {
+		//TODO create a user
 	}
 });
 
+//Get Data of current User, like users anime list and Profilepicture
 app.get('/user', (req, res) => {
 	session = req.session;
 	if (session.uuid) {
@@ -55,6 +62,7 @@ app.get('/user', (req, res) => {
 	} else res.status(403);
 });
 
+//Get a list of anime, possibly will get a filter and/or sorting parameter
 app.get('/db/anime', (req, res) => {
 	const { amount } = req.query;
 	if (amount) {
@@ -64,6 +72,7 @@ app.get('/db/anime', (req, res) => {
 	}
 });
 
+//Get a specific anime, like when on the Anime's specific site, gotta look into how exactly to do this, currently I would let the client request based on it's own url
 app.get('/db/anime/:anime', (req, res) => {
 	const { anime } = req.params;
 	if (anime) {
@@ -81,12 +90,13 @@ app.listen(process.env.port, () => console.log('started'));
 
 //TODO When getting animes, replace "U+0027" with "'", wich has been done the other way before to import the data correctly
 
+//Helper functions for Database
 async function getAnimes(amount) {
 	let res = await db.any(`select * from public.anime limit ${amount}`);
 	return res;
 }
-async function getAnime(anime) {
-	let res = await db.any(`select * from public.anime where id = ${anime}`);
+async function getAnime(animeId) {
+	let res = await db.any(`select * from public.anime where id = ${animeId}`);
 	return res;
 }
 async function getUserAuth(uuid) {
@@ -99,4 +109,4 @@ async function getUser(uuid) {
 		`select uuid,animeList,profilePic from user where uuid = ${uuid}`
 	);
 }
-async function createUser(uuid, hashedPass) {}
+async function createUser(uuid, hashedPass) {/*Create a User in the DB*/}
