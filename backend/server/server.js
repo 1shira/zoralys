@@ -78,6 +78,9 @@ app.get('*', (req, res) => {
 app.listen(process.env.port, () => console.log('started'));
 
 // how does this return a promise?
+
+//TODO When getting animes, replace "U+0027" with "'", wich has been done the other way before to import the data correctly
+
 async function getAnimes(amount) {
 	let res = await db.any(`select * from public.anime limit ${amount}`);
 	return res;
