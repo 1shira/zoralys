@@ -39,3 +39,11 @@ CREATE TABLE public.anime (
     tags text,
     other text
 );
+
+create table public.user(
+    id serial,
+    uuid text,
+    hashedPass text,
+    animeList text,
+    profilePic text
+);
