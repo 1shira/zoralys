@@ -40,7 +40,7 @@ CREATE TABLE public.anime (
     other text
 );
 
-create table public.user(
+CREATE TABLE public.user(
     id serial,
     uuid text,
     hashedPass text,
