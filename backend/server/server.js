@@ -2,18 +2,20 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import pgpx from 'pg-promise';
 import sessions from 'express-session';
 import cookieParser from 'cookie-parser';
+import {
+	db,
+	getAnime,
+	getAnimes,
+	getUser,
+	getUserAuth,
+	createUser,
+} from './module/helpers';
 
 dotenv.config();
 
 var session;
-
-const pgp = pgpx();
-const db = pgp(
-	`postgres://${process.env.DBUSER}:${process.env.DBPASSWORD}@${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBDATABASE}`
-);
 
 const app = express();
 app.use(morgan('tiny'));
@@ -43,7 +45,7 @@ app.get('/logout', (req, res) => {
 	res.redirect('/');
 });
 
-app.put('/user', (req, res) => {
+app.POST('/user', (req, res) => {
 	if (req.body.uuid && req.body.hashedPass) {
 	}
 });
@@ -76,24 +78,3 @@ app.get('*', (req, res) => {
 });
 
 app.listen(process.env.port, () => console.log('started'));
-
-// how does this return a promise?
-async function getAnimes(amount) {
-	let res = await db.any(`select * from public.anime limit ${amount}`);
-	return res;
-}
-async function getAnime(anime) {
-	let res = await db.any(`select * from public.anime where id = ${anime}`);
-	return res;
-}
-async function getUserAuth(uuid) {
-	return await db.one(
-		`select hashedPass from public.users where uuid = ${uuid}`
-	);
-}
-async function getUser(uuid) {
-	return await db.one(
-		`select uuid,animeList,profilePic from user where uuid = ${uuid}`
-	);
-}
-async function createUser(uuid, hashedPass) {}
