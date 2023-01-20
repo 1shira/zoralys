@@ -17,7 +17,6 @@ const db = pgp(
 
 const app = express();
 app.use(morgan('tiny'));
-app.use(helmet());
 app.use(
 	sessions({
 		secret: 'sometobegeneratedramdomcode7t48293thgfro',
@@ -26,6 +25,7 @@ app.use(
 		resave: false,
 	})
 );
+app.use(express.static('./public'));
 app.use(cookieParser());
 
 app.post('/login', (req, res) => {
