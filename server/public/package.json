@@ -1,0 +1,23 @@
+{
+	"name": "zoralys",
+	"description": "Some fullstack anime website made just for fun with @MrBabo27",
+	"version": "0.1.0",
+	"main": "app.js",
+	"scripts": {
+		"twdev": "npx tailwindcss -i ./input.css -o ./css/app.css --watch",
+		"twprod": "npx tailwindcss -i ./input.css -o ./css/app.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Mastaofme/zoralys.git"
+	},
+	"author": "Mastaofme",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/Mastaofme/zoralys/issues"
+	},
+	"homepage": "https://github.com/Mastaofme/zoralys#readme",
+	"devDependencies": {
+		"tailwindcss": "^3.2.4"
+	}
+}

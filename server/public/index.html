@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="stylesheet" href="./css/style.css" /> -->
+		<link rel="stylesheet" href="./css/app.css" />
+		<title>Zoralys</title>
+	</head>
+	<body style="background-color: #212529">
+		<div class="flex w-screen max-w-full flex-col" id="app">
+			<div
+				class="flex-initial items-center w-auto flex bg-cyan-800 h-20 rounded-full mt-3 m-2 justify-end align-middle md:mt-4 md:m-3 lg:mt-4 lg:m-8 lg:h-28 xl:mt-4 xl:m-12">
+				<div
+					class="transition-all origin-right hover:w-56 lg:hover:w-80 flex items-center duration-300 bg-teal-600 h-16 w-16 rounded-full mr-2 p-3 text-2xl lg:text-3xl overflow-hidden lg:h-24 lg:w-24 text-transparent hover:text-current hover:text-black font-semibold">
+					<img :src="getUserProfilePicture()" class="w-12 lg:w-20" />
+					<div class="w-44 lg:w-60 flex justify-center">
+						<span class="align-middle">{{username()}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="bg-pink-800 w-auto h-auto rounded-md ml-7 mr-7 p-5 lg:ml-60 lg:mr-60 lg:mt-6">
+				<table class="table-auto">
+					<thead class="font-bold"></thead>
+					<tbody class="box-border">
+						<tr v-for="anime of animeList">
+							<td>
+								<img :src="anime.picture" class="rounded-lg h-52 mb-20" />
+							</td>
+							<td>{{anime.title}}</td>
+							<td>TEST</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script src="./js/vue.global.min.js"></script>
+		<script src="./js/axios.min.js"></script>
+		<script src="./js/app.js"></script>
+	</body>
+</html>
